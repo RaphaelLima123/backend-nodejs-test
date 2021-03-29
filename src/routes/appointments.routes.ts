@@ -17,19 +17,11 @@ appointmentsRouter.get('/', async (request, response) => {
 appointmentsRouter.post('/', async (request, response) => {
   try {
 
-    console.log('CHEGA AQUI POR FAVOR', request.body);
-
     const {provider, date} = request.body;
-
-    console.log('CHEGA TAMBÉM', provider, date);
 
     const parseDate = parseISO(date);
 
-    console.log("AQUI É PARSEDATE", parseDate);
-
     const createAppointment = new CreateAppointmentService();
-
-    console.log("AQUI É CREATEAPPOINTMENT", createAppointment);
 
     const appointment = await createAppointment.execute({
       date: parseDate,
